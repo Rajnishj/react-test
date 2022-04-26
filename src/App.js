@@ -20,20 +20,20 @@ function App() {
   const [dialog, setDialog] = useState({
     message: "",
     isLoading: false,
-    nameProduct: "",
+    listTitle: "",
   });
   const idListRef = useRef();
-  const handleDialog = (message, isLoading, nameProduct) => {
+  const handleDialog = (message, isLoading, listTitle) => {
     setDialog({
       message,
       isLoading,
-      nameProduct,
+      listTitle,
     });
   };
 
   const handleDelete = (id) => {
     const index = lists.findIndex((p) => p.id === id);
-    handleDialog("Are you sure you want to delete?", true, lists[index].name);
+    handleDialog("Are you sure you want to delete?", true, lists[index].title);
     idListRef.current = id;
   };
 
@@ -103,7 +103,7 @@ function App() {
       </table>
       {dialog.isLoading && (
         <Model
-          nameProduct={dialog.nameProduct}
+          listTitle={dialog.listTitle}
           onDialog={areUSureDelete}
           message={dialog.message}
         />
